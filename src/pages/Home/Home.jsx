@@ -8,10 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchTrending()
-      .then(data => {
-        setTrendingList(data.results);
-        console.log(trendingList);
-      })
+      .then(data => {})
       .catch(error => console.log(error.message));
   }, []);
 
