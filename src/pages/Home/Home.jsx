@@ -13,30 +13,45 @@ const Home = () => {
       })
       .catch(error => console.log(error.message));
   }, []);
-
   return (
-    <ul>
-      {trendingList.map(({ id, title, name }) => {
-        if (title) {
-          return (
-            <li key={id}>
-              <Link state={{ from: location }} to={`movies/${id}`}>
-                {title}
-              </Link>
-            </li>
-          );
-        }
-
-        return (
+    <div>
+      <div>Trending today</div>
+      <ul>
+        {trendingList?.map(({ id, title, name }) => (
           <li key={id}>
-            <Link state={{ from: location }} to={`movies/${id}`}>
-              {name}
+            <Link to={`/movies/${id}`} state={{ from: location }}>
+              {title || name}
             </Link>
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    </div>
   );
 };
+
+//   return (
+//     <ul>
+//       {trendingList.map(({ id, title, name }) => {
+//         if (title) {
+//           return (
+//             <li key={id}>
+//               <Link state={{ from: location }} to={`movies/${id}`}>
+//                 {title}
+//               </Link>
+//             </li>
+//           );
+//         }
+
+//         return (
+//           <li key={id}>
+//             <Link state={{ from: location }} to={`movies/${id}`}>
+//               {name}
+//             </Link>
+//           </li>
+//         );
+//       })}
+//     </ul>
+//   );
+// };
 
 export default Home;
