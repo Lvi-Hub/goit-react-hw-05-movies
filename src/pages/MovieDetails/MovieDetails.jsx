@@ -1,11 +1,14 @@
 import { fetchMovieDetails } from 'Service/fetchApi';
 import React, { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container, Img, Info, AddInfo, ItemLink } from './MovieDetails.styled';
+import { BackLink } from 'components/BackLink/BackLink';
 
 const MoviesDetails = () => {
   const { movieId } = useParams();
   const [moviesDatails, setMoviesDatails] = useState([]);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     fetchMovieDetails(movieId)
@@ -16,10 +19,10 @@ const MoviesDetails = () => {
       .catch(error => console.log(error.message));
   }, [movieId]);
   // console.log(moviesDatails);
-  const { title, backdrop_path, poster_path, vote_average, overview, genres } =
-    moviesDatails;
+  const { title, poster_path, vote_average, overview, genres } = moviesDatails;
   return (
     <>
+      <BackLink to={backLinkHref}>Go Back</BackLink>
       <Container>
         <Img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}

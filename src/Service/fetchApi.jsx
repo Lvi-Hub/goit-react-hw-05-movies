@@ -41,6 +41,18 @@ export function fetchCast(moviesID) {
   });
 }
 
+//-- https://api.themoviedb.org/3/movie/{movie_id}/reviews
+export function fetchReviews(moviesID) {
+  const URLReviews = `${URL}/movie/${moviesID}/reviews?api_key=${api_key}`;
+  return fetch(URLReviews).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(new Error('Can´t find tranding films'));
+  });
+}
+
 //------
 fetchTrending.propTypes = {
   moviesID: PropTypes.number.isRequired,

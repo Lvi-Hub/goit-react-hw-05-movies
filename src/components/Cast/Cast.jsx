@@ -1,7 +1,7 @@
 import { fetchCast } from 'Service/fetchApi';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Img } from './Cast.styled';
+import { Container, Img, ItemList } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -10,7 +10,7 @@ const Cast = () => {
   useEffect(() => {
     fetchCast(movieId)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setCast(data);
       })
       .catch(error => console.log(error.message));
@@ -18,7 +18,7 @@ const Cast = () => {
   const { cast } = Cast;
   return (
     <Container>
-      <ul>
+      <ItemList>
         {cast?.map(({ id, name, profile_path }) => (
           <li key={id}>
             <Img
@@ -28,7 +28,7 @@ const Cast = () => {
             <p>{name}</p>
           </li>
         ))}
-      </ul>
+      </ItemList>
     </Container>
   );
 };
