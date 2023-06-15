@@ -1,4 +1,4 @@
-import { fetchMovieDetails } from 'Service/fetchApi';
+import { fetchMovieDetails } from 'service/fetchApi';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import {
