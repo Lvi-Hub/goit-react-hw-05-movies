@@ -9,7 +9,7 @@ import {
   ItemLink,
   Message,
 } from './MovieDetails.styled';
-import { BackLink } from 'components/BackLink/BackLink';
+import BackLink from 'components/BackLink/BackLink';
 import PropTypes from 'prop-types';
 
 const MoviesDetails = () => {
