@@ -10,7 +10,7 @@ import {
 } from './MovieDetails.styled';
 import BackLink from 'components/BackLink/BackLink';
 import PropTypes from 'prop-types';
-import { fetchMovieDetails } from 'service/fetchApi';
+import { fetchMovieDetails } from 'Service/fetchApi';
 
 const MoviesDetails = () => {
   const { movieId } = useParams();

@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TbSearch } from 'react-icons/tb';
-import { fetchSearch } from 'service/fetchApi';
+import { fetchSearch } from 'Service/fetchApi';
 import { Container, List, SubmitForm } from './Movie.styled';
 
 const Movies = () => {

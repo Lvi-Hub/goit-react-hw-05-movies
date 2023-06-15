@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTrending } from '../../service/fetchApi';
+import { fetchTrending } from '../../Service/fetchApi';
 import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
