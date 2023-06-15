@@ -23,3 +23,7 @@ export const AddInfo = styled.div`
 export const ItemLink = styled(Link)`
   padding-bottom: 20px;
 `;
+
+export const Message = styled.div`
+  padding-top: 20px;
+`;
