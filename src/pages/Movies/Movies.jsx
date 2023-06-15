@@ -3,6 +3,7 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TbSearch } from 'react-icons/tb';
 import { fetchSearch } from 'Service/fetchApi';
+import { Container, List, SubmitForm } from './Movie.styled';
 
 const Movies = () => {
   const location = useLocation();
@@ -35,9 +36,9 @@ const Movies = () => {
   const { results } = recieveData;
   console.log(results);
   return (
-    <>
+    <Container>
       <div>
-        <form onSubmit={handleSubmit}>
+        <SubmitForm onSubmit={handleSubmit}>
           <input
             type="text"
             autoComplete="off"
@@ -49,12 +50,12 @@ const Movies = () => {
             <TbSearch />
             <span>Search</span>
           </button>
-        </form>
+        </SubmitForm>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
         <div>
           {results && (
-            <ul>
+            <List>
               {results.map(({ id, title, name }) => (
                 <li key={id}>
                   <Link to={`/movies/${id}`} state={{ from: location }}>
@@ -62,11 +63,11 @@ const Movies = () => {
                   </Link>
                 </li>
               ))}
-            </ul>
+            </List>
           )}
         </div>
       </Suspense>
-    </>
+    </Container>
   );
 };
 
