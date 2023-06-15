@@ -1,8 +1,8 @@
-import { fetchReviews } from 'service/fetchApi';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, ItemList } from './Reviews.styled';
 import PropTypes from 'prop-types';
+import { fetchReviews } from '../../service/fetchApi';
 
 const Reviews = () => {
   const { movieId } = useParams();
