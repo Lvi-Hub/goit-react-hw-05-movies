@@ -1,4 +1,3 @@
-import { fetchMovieDetails } from '../../service/fetchApi';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import {
@@ -11,6 +10,7 @@ import {
 } from './MovieDetails.styled';
 import BackLink from 'components/BackLink/BackLink';
 import PropTypes from 'prop-types';
+import { fetchMovieDetails } from 'service/fetchApi';
 
 const MoviesDetails = () => {
   const { movieId } = useParams();
