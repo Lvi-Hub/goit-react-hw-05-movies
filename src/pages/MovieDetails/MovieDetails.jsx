@@ -1,14 +1,17 @@
 import { fetchMovieDetails } from 'Service/fetchApi';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container, Img, Info, AddInfo, ItemLink } from './MovieDetails.styled';
 import { BackLink } from 'components/BackLink/BackLink';
+import PropTypes from 'prop-types';
 
 const MoviesDetails = () => {
   const { movieId } = useParams();
   const [moviesDatails, setMoviesDatails] = useState([]);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location.state?.from ?? '/');
+
+  console.log(backLinkHref);
 
   useEffect(() => {
     fetchMovieDetails(movieId)
@@ -22,7 +25,7 @@ const MoviesDetails = () => {
   const { title, poster_path, vote_average, overview, genres } = moviesDatails;
   return (
     <>
-      <BackLink to={backLinkHref}>Go Back</BackLink>
+      <BackLink to={backLinkHref.current}>Go Back</BackLink>
       <Container>
         <Img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -51,10 +54,26 @@ const MoviesDetails = () => {
             <ItemLink to="Reviews">Reviews</ItemLink>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </AddInfo>
     </>
   );
+};
+
+MoviesDetails.propTypes = {
+  movieDetails: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string.isRequired,
+  }),
+
+  genres: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
 };
 
 export default MoviesDetails;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 const URL = 'https://api.themoviedb.org/3';
 const api_key = '481cbb6dba5121edc01136f73aa6b3c6';
 const page = 1;
@@ -53,7 +52,14 @@ export function fetchReviews(moviesID) {
   });
 }
 
-//------
-fetchTrending.propTypes = {
-  moviesID: PropTypes.number.isRequired,
-};
+//-- https://api.themoviedb.org/3/search/movie
+export function fetchSearch(SearchName) {
+  const URLReviews = `${URL}/search/movie?api_key=${api_key}&query=${SearchName}`;
+  return fetch(URLReviews).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(new Error('Can´t find tranding films'));
+  });
+}

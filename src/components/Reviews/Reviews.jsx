@@ -2,6 +2,7 @@ import { fetchReviews } from 'Service/fetchApi';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, ItemList } from './Reviews.styled';
+import PropTypes from 'prop-types';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -30,4 +31,11 @@ const Reviews = () => {
   );
 };
 
+Reviews.propTypes = {
+  results: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    author: PropTypes.string.isRequired,
+    content: PropTypes.string,
+  }),
+};
 export default Reviews;

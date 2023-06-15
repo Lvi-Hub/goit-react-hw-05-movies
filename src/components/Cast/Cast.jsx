@@ -2,6 +2,7 @@ import { fetchCast } from 'Service/fetchApi';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Img, ItemList } from './Cast.styled';
+import PropTypes from 'prop-types';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -31,6 +32,14 @@ const Cast = () => {
       </ItemList>
     </Container>
   );
+};
+
+Cast.propTypes = {
+  cast: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    profile_path: PropTypes.string,
+  }),
 };
 
 export default Cast;
