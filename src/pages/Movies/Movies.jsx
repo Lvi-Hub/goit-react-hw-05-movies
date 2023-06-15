@@ -34,7 +34,7 @@ const Movies = () => {
   }, [name]);
 
   const { results } = recieveData;
-  console.log(results);
+
   return (
     <Container>
       <div>
