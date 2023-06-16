@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { TbSearch } from 'react-icons/tb';
 import { fetchSearch } from 'Service/fetchApi';
 import { Container, List, SubmitForm } from './Movie.styled';
-
+//--
 const Movies = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();

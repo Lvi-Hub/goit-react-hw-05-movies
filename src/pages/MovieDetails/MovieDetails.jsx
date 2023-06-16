@@ -11,7 +11,7 @@ import {
 import BackLink from 'components/BackLink/BackLink';
 import PropTypes from 'prop-types';
 import { fetchMovieDetails } from 'Service/fetchApi';
-
+//--
 const MoviesDetails = () => {
   const { movieId } = useParams();
   const [moviesDatails, setMoviesDatails] = useState([]);

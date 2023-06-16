@@ -1,6 +1,5 @@
 const URL = 'https://api.themoviedb.org/3';
 const api_key = '481cbb6dba5121edc01136f73aa6b3c6';
-//
 //--
 export function fetchTrending() {
   const urlTrending = `${URL}/trending/all/day?api_key=${api_key}`;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Img, ItemList } from './Cast.styled';
 import PropTypes from 'prop-types';
-
+//--
 const Cast = () => {
   const { movieId } = useParams();
   const [Cast, setCast] = useState([]);
