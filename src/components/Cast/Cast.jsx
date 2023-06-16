@@ -11,11 +11,11 @@ const Cast = () => {
   useEffect(() => {
     fetchCast(movieId)
       .then(data => {
-        // console.log(data);
         setCast(data);
       })
       .catch(error => console.log(error.message));
   }, [movieId]);
+
   const { cast } = Cast;
   return (
     <Container>

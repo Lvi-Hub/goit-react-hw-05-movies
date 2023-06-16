@@ -48,13 +48,15 @@ export function fetchReviews(moviesID) {
 }
 
 //-- https://api.themoviedb.org/3/search/movie
-export function fetchSearch(SearchName) {
+export function fetchSearch(SearchName, setError) {
   const URLReviews = `${URL}/search/movie?api_key=${api_key}&query=${SearchName}`;
   return fetch(URLReviews).then(res => {
     if (res.ok) {
       return res.json();
     }
 
-    return Promise.reject(new Error('Can´t find tranding films'));
+    return (
+      setError(true), Promise.reject(new Error('Can´t find tranding films'))
+    );
   });
 }
